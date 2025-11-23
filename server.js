@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
 const { nanoid } = require('nanoid');
-const expressLayouts = require('express-ejs-layouts');   // <-- added
+const expressLayouts = require('express-ejs-layouts');   
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(expressLayouts);        // <-- enable layout engine
-app.set('layout', 'layout');    // <-- default layout file views/layout.ejs
+app.use(expressLayouts);        
+app.set('layout', 'layout');    
 
 const CODE_REGEX = /^[A-Za-z0-9]{6,8}$/;
 
@@ -42,7 +42,7 @@ function isValidUrl(u) {
   }
 }
 
-/* ----- Pages ----- */
+
 
 app.get('/', async (req, res) => {
   try {
@@ -70,13 +70,13 @@ app.get('/code/:code', async (req, res) => {
   }
 });
 
-/* ----- Health Check ----- */
+
 
 app.get('/healthz', (req, res) => {
   res.json({ ok: true, version: '1.0', uptime: process.uptime() });
 });
 
-/* ----- API Routes ----- */
+
 
 app.post('/api/links', async (req, res) => {
   const { url, code: customCode } = req.body || {};
@@ -172,7 +172,6 @@ app.delete('/api/links/:code', async (req, res) => {
   }
 });
 
-/* ----- Redirect ----- */
 
 app.get('/:code', async (req, res) => {
   const { code } = req.params;
@@ -198,7 +197,7 @@ app.get('/:code', async (req, res) => {
   }
 });
 
-/* ----- Server Start ----- */
+
 
 app.listen(PORT, () => {
   console.log(`TinyLink listening on ${PORT} - baseUrl=${BASE_URL}`);
