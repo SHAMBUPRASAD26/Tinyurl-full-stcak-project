@@ -4,7 +4,6 @@
     URL Shortener Dashboard
   </h1>
 
-  
   <section class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1 max-w-3xl mx-auto">
     <h2 class="text-2xl font-semibold mb-6 text-center text-blue-700">
       Create Short Link
@@ -45,7 +44,6 @@
     </form>
   </section>
 
-
   <section class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition max-w-4xl mx-auto">
     <h2 class="text-2xl text-center font-semibold text-blue-700 mb-6">Your Links</h2>
 
@@ -77,7 +75,7 @@
                 <td class="py-3 px-3 text-center"><%= l.clicks %></td>
 
                 <td class="py-3 px-3 text-center">
-                  <%= l.last_clicked ? new Date(l.last_clicked).toLocaleString() : '-' %>
+                  <%= l.last_clicked ? new Date(l.last_clicked).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) : '-' %>
                 </td>
 
                 <td class="py-3 px-3 text-center space-x-3">

@@ -17,9 +17,16 @@
     </p>
 
     <p><strong>Clicks:</strong> <%= link.clicks %></p>
-    <p><strong>Created:</strong> <%= new Date(link.created_at).toLocaleString() %></p>
+
+    <p><strong>Created:</strong>
+      <%= new Date(link.created_at).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) %>
+    </p>
+
     <p><strong>Last clicked:</strong>
-      <%= link.last_clicked ? new Date(link.last_clicked).toLocaleString() : '-' %>
+      <%= link.last_clicked 
+          ? new Date(link.last_clicked).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) 
+          : '-' 
+      %>
     </p>
   </div>
 
