@@ -186,9 +186,10 @@ app.get('/:code', async (req, res) => {
     const url = r.rows[0].url;
 
     await query(
-      'UPDATE links SET clicks = clicks + 1, last_clicked = now() WHERE code=$1',
-      [code]
-    );
+  "UPDATE links SET clicks = clicks + 1, last_clicked = (NOW() AT TIME ZONE 'Asia/Kolkata') WHERE code=$1",
+  [code]
+);
+
 
     res.redirect(302, url);
   } catch (err) {
